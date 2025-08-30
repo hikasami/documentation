@@ -10,6 +10,7 @@ import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { Rate } from '@/components/rate';
 import { getMDXComponents } from '@/mdx-components';
+import { LLMCopyButton, ViewOptions } from '@/components/page-actions';
 
 export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
@@ -17,11 +18,30 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
   if (!page) notFound();
 
   const MDXContent = page.data.body;
+  console.log(page)
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full} lastUpdate={new Date(page.data.lastModified  || '')}>
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+    <DocsPage toc={page.data.toc} full={page.data.full} lastUpdate={new Date(page.data.lastModified  || '')}
+      tableOfContent={{
+        style: 'clerk',
+      }}>
+      <h1 className="text-3xl font-semibold">{page.data.title}</h1>
+      { page.data.description &&
+        <p className="text-lg text-fd-muted-foreground">
+        {page.data.description}
+      </p>
+      }
+      <div className="flex flex-row gap-2 items-center border-b pt-2 pb-6">
+        <LLMCopyButton data={{
+          content: page.data.content,
+          title: page.data.title,
+          description: page.data.description
+        }} />
+        <ViewOptions
+          markdownUrl={`${page.url}.mdx`}
+          githubUrl={`https://github.com/hikasami/documentation/blob/dev/apps/docs/content/docs/${page.path}`}
+        />
+      </div>
       <DocsBody>
         <MDXContent
           components={getMDXComponents({
