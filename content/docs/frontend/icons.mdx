@@ -1,0 +1,73 @@
+---
+title: "Иконки"
+description: "Система иконок основана на SVG символах и автоматической генерации TypeScript кода. Это обеспечивает типобезопасность, оптимизацию производительности и удобство использования."
+---
+
+<HikasamiIconsBox />
+
+## Использование
+
+### Базовое использование
+
+```typescript
+import { Icon } from '@/shared/icons/Icon';
+
+// Простая иконка
+<Icon id="arrow-right" />
+
+// С кастомными размерами
+<Icon id="heart" width={24} height={24} />
+
+// С цветом
+<Icon id="star" color="#FFD700" />
+
+// Заполненная версия
+<Icon id="heart" iconStyle="fill" />
+```
+
+### Продвинутое использование
+
+```typescript
+// В компоненте кнопки
+const Button: React.FC<ButtonProps> = ({ icon, children, ...props }) => {
+  return (
+    <button {...props}>
+      {icon && <Icon id={icon} width={16} height={16} />}
+      {children}
+    </button>
+  );
+};
+
+// Использование
+<Button icon="arrow-right">Далее</Button>
+<Button icon="heart" iconStyle="fill">Избранное</Button>
+```
+
+### Стилизация
+
+```scss
+// Иконки наследуют цвет от родителя
+.button {
+  color: var(--color-primary);
+  
+  .icon {
+    // Иконка будет цвета --color-primary
+  }
+}
+
+// Анимации
+.icon-animated {
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Размеры через CSS переменные
+.icon-large {
+  --icon-size: 32px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+```

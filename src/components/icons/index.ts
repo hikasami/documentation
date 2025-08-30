@@ -1,0 +1,89 @@
+// ⚠️ Файл создан автоматически. Пожалуйста, не вносите изменения вручную.
+export { ArchiveRegularIcon } from './components/ArchiveRegularIcon';
+export { ArrowdownRegularIcon } from './components/ArrowdownRegularIcon';
+export { ArrowleftRegularIcon } from './components/ArrowleftRegularIcon';
+export { ArrowrightfromsquareRegularIcon } from './components/ArrowrightfromsquareRegularIcon';
+export { ArrowrighttosquareRegularIcon } from './components/ArrowrighttosquareRegularIcon';
+export { ArrowrightRegularIcon } from './components/ArrowrightRegularIcon';
+export { ArrowupRegularIcon } from './components/ArrowupRegularIcon';
+export { ChevrondownRegularIcon } from './components/ChevrondownRegularIcon';
+export { ChevronleftRegularIcon } from './components/ChevronleftRegularIcon';
+export { ChevronrightRegularIcon } from './components/ChevronrightRegularIcon';
+export { ChevronupRegularIcon } from './components/ChevronupRegularIcon';
+export { ChevronsdownwideRegularIcon } from './components/ChevronsdownwideRegularIcon';
+export { CirclecheckFillIcon } from './components/CirclecheckFillIcon';
+export { CirclecheckRegularIcon } from './components/CirclecheckRegularIcon';
+export { CirclexmarkFillIcon } from './components/CirclexmarkFillIcon';
+export { CirclexmarkRegularIcon } from './components/CirclexmarkRegularIcon';
+export { Circles3RegularIcon } from './components/Circles3RegularIcon';
+export { DiscordRegularIcon } from './components/DiscordRegularIcon';
+export { FlameRegularIcon } from './components/FlameRegularIcon';
+export { GearRegularIcon } from './components/GearRegularIcon';
+export { GithubRegularIcon } from './components/GithubRegularIcon';
+export { HabrRegularIcon } from './components/HabrRegularIcon';
+export { HeartFillIcon } from './components/HeartFillIcon';
+export { HeartRegularIcon } from './components/HeartRegularIcon';
+export { HouseRegularIcon } from './components/HouseRegularIcon';
+export { LockRegularIcon } from './components/LockRegularIcon';
+export { MagnifierRegularIcon } from './components/MagnifierRegularIcon';
+export { MegaphoneRegularIcon } from './components/MegaphoneRegularIcon';
+export { StarFillIcon } from './components/StarFillIcon';
+export { StarRegularIcon } from './components/StarRegularIcon';
+export { TelegramRegularIcon } from './components/TelegramRegularIcon';
+export { ThumbsdownFillIcon } from './components/ThumbsdownFillIcon';
+export { ThumbsdownRegularIcon } from './components/ThumbsdownRegularIcon';
+export { ThumbsupFillIcon } from './components/ThumbsupFillIcon';
+export { ThumbsupRegularIcon } from './components/ThumbsupRegularIcon';
+export { TriangleexclamationFillIcon } from './components/TriangleexclamationFillIcon';
+export { TriangleexclamationRegularIcon } from './components/TriangleexclamationRegularIcon';
+export { TrianglerightFillIcon } from './components/TrianglerightFillIcon';
+export { TrianglerightRegularIcon } from './components/TrianglerightRegularIcon';
+export { TrianglethunderboltRegularIcon } from './components/TrianglethunderboltRegularIcon';
+export { VkRegularIcon } from './components/VkRegularIcon';
+
+export type IconName = 'archive-regular' | 'arrowdown-regular' | 'arrowleft-regular' | 'arrowrightfromsquare-regular' | 'arrowrighttosquare-regular' | 'arrowright-regular' | 'arrowup-regular' | 'chevrondown-regular' | 'chevronleft-regular' | 'chevronright-regular' | 'chevronup-regular' | 'chevronsdownwide-regular' | 'circlecheck-fill' | 'circlecheck-regular' | 'circlexmark-fill' | 'circlexmark-regular' | 'circles3-regular' | 'discord-regular' | 'flame-regular' | 'gear-regular' | 'github-regular' | 'habr-regular' | 'heart-fill' | 'heart-regular' | 'house-regular' | 'lock-regular' | 'magnifier-regular' | 'megaphone-regular' | 'star-fill' | 'star-regular' | 'telegram-regular' | 'thumbsdown-fill' | 'thumbsdown-regular' | 'thumbsup-fill' | 'thumbsup-regular' | 'triangleexclamation-fill' | 'triangleexclamation-regular' | 'triangleright-fill' | 'triangleright-regular' | 'trianglethunderbolt-regular' | 'vk-regular';
+
+// Карта иконок для динамической загрузки
+export const iconMap = {
+  'archiveregular': () => import('./components/ArchiveRegularIcon').then(m => m.ArchiveRegularIcon),
+  'arrowdownregular': () => import('./components/ArrowdownRegularIcon').then(m => m.ArrowdownRegularIcon),
+  'arrowleftregular': () => import('./components/ArrowleftRegularIcon').then(m => m.ArrowleftRegularIcon),
+  'arrowrightfromsquareregular': () => import('./components/ArrowrightfromsquareRegularIcon').then(m => m.ArrowrightfromsquareRegularIcon),
+  'arrowrighttosquareregular': () => import('./components/ArrowrighttosquareRegularIcon').then(m => m.ArrowrighttosquareRegularIcon),
+  'arrowrightregular': () => import('./components/ArrowrightRegularIcon').then(m => m.ArrowrightRegularIcon),
+  'arrowupregular': () => import('./components/ArrowupRegularIcon').then(m => m.ArrowupRegularIcon),
+  'chevrondownregular': () => import('./components/ChevrondownRegularIcon').then(m => m.ChevrondownRegularIcon),
+  'chevronleftregular': () => import('./components/ChevronleftRegularIcon').then(m => m.ChevronleftRegularIcon),
+  'chevronrightregular': () => import('./components/ChevronrightRegularIcon').then(m => m.ChevronrightRegularIcon),
+  'chevronupregular': () => import('./components/ChevronupRegularIcon').then(m => m.ChevronupRegularIcon),
+  'chevronsdownwideregular': () => import('./components/ChevronsdownwideRegularIcon').then(m => m.ChevronsdownwideRegularIcon),
+  'circlecheckfill': () => import('./components/CirclecheckFillIcon').then(m => m.CirclecheckFillIcon),
+  'circlecheckregular': () => import('./components/CirclecheckRegularIcon').then(m => m.CirclecheckRegularIcon),
+  'circlexmarkfill': () => import('./components/CirclexmarkFillIcon').then(m => m.CirclexmarkFillIcon),
+  'circlexmarkregular': () => import('./components/CirclexmarkRegularIcon').then(m => m.CirclexmarkRegularIcon),
+  'circles3regular': () => import('./components/Circles3RegularIcon').then(m => m.Circles3RegularIcon),
+  'discordregular': () => import('./components/DiscordRegularIcon').then(m => m.DiscordRegularIcon),
+  'flameregular': () => import('./components/FlameRegularIcon').then(m => m.FlameRegularIcon),
+  'gearregular': () => import('./components/GearRegularIcon').then(m => m.GearRegularIcon),
+  'githubregular': () => import('./components/GithubRegularIcon').then(m => m.GithubRegularIcon),
+  'habrregular': () => import('./components/HabrRegularIcon').then(m => m.HabrRegularIcon),
+  'heartfill': () => import('./components/HeartFillIcon').then(m => m.HeartFillIcon),
+  'heartregular': () => import('./components/HeartRegularIcon').then(m => m.HeartRegularIcon),
+  'houseregular': () => import('./components/HouseRegularIcon').then(m => m.HouseRegularIcon),
+  'lockregular': () => import('./components/LockRegularIcon').then(m => m.LockRegularIcon),
+  'magnifierregular': () => import('./components/MagnifierRegularIcon').then(m => m.MagnifierRegularIcon),
+  'megaphoneregular': () => import('./components/MegaphoneRegularIcon').then(m => m.MegaphoneRegularIcon),
+  'starfill': () => import('./components/StarFillIcon').then(m => m.StarFillIcon),
+  'starregular': () => import('./components/StarRegularIcon').then(m => m.StarRegularIcon),
+  'telegramregular': () => import('./components/TelegramRegularIcon').then(m => m.TelegramRegularIcon),
+  'thumbsdownfill': () => import('./components/ThumbsdownFillIcon').then(m => m.ThumbsdownFillIcon),
+  'thumbsdownregular': () => import('./components/ThumbsdownRegularIcon').then(m => m.ThumbsdownRegularIcon),
+  'thumbsupfill': () => import('./components/ThumbsupFillIcon').then(m => m.ThumbsupFillIcon),
+  'thumbsupregular': () => import('./components/ThumbsupRegularIcon').then(m => m.ThumbsupRegularIcon),
+  'triangleexclamationfill': () => import('./components/TriangleexclamationFillIcon').then(m => m.TriangleexclamationFillIcon),
+  'triangleexclamationregular': () => import('./components/TriangleexclamationRegularIcon').then(m => m.TriangleexclamationRegularIcon),
+  'trianglerightfill': () => import('./components/TrianglerightFillIcon').then(m => m.TrianglerightFillIcon),
+  'trianglerightregular': () => import('./components/TrianglerightRegularIcon').then(m => m.TrianglerightRegularIcon),
+  'trianglethunderboltregular': () => import('./components/TrianglethunderboltRegularIcon').then(m => m.TrianglethunderboltRegularIcon),
+  'vkregular': () => import('./components/VkRegularIcon').then(m => m.VkRegularIcon),
+} as const;

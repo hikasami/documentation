@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev --turbo",
     "start": "next start",
-    "postinstall": "fumadocs-mdx"
+    "postinstall": "fumadocs-mdx",
+    "icons:generate": "tsx src/components/icons/generate-icons.ts",
+    "icons:build": "npm run icons:generate"
   },
   "dependencies": {
     "@radix-ui/react-popover": "^1.1.15",
@@ -19,6 +21,7 @@
     "next": "15.5.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "svgo": "^4.0.0",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
@@ -31,6 +34,7 @@
     "eslint-config-next": "15.5.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
 }

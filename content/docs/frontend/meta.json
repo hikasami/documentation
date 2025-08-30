@@ -4,6 +4,7 @@
   "icon": "AppWindow",
   "root": true,
   "pages": [
-    "index"
+    "index",
+    "icons"
   ]
 }
