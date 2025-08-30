@@ -1,3 +1,7 @@
 {
-  "pages": ["legal", "frontend"]
+  "pages": [
+    "index",
+    "legal", 
+    "frontend"
+  ]
 }
