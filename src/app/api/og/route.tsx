@@ -65,36 +65,38 @@ export async function GET(request: Request) {
           overflow: 'hidden',
         }}
       >
-        {/* Заголовок */}
-        <div
-          style={{
-            width: '676px',
-            fontSize: '48px',
-            lineHeight: '72.8px',
-            fontFamily: 'Geist',
-            fontWeight: 800,
-            color: '#fff',
-            letterSpacing: '0.05em',
-            display: 'flex',
-          }}
-        >
-          {title}
-        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+            {/* Заголовок */}
+            <div
+              style={{
+                width: '676px',
+                fontSize: '48px',
+                lineHeight: '72.8px',
+                fontFamily: 'Geist',
+                fontWeight: 800,
+                color: '#fff',
+                letterSpacing: '0.05em',
+                display: 'flex',
+              }}
+            >
+              {title}
+            </div>
 
-        {/* Описание */}
-        {description && <div
-          style={{
-            width: '100%',
-            fontSize: '21px',
-            fontFamily: 'Geist',
-            fontWeight: 400,
-            color: '#7E7E7E',
-            letterSpacing: '0.05em',
-            display: 'flex',
-          }}
-        >
-          {description}
-        </div>}
+            {/* Описание */}
+            {description && <div
+              style={{
+                width: '100%',
+                fontSize: '21px',
+                fontFamily: 'Geist',
+                fontWeight: 400,
+                color: '#7E7E7E',
+                letterSpacing: '0.05em',
+                display: 'flex',
+              }}
+            >
+              {description}
+            </div>}
+        </div>
 
         {/* Блок документации */}
         <div
