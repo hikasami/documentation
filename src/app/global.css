@@ -61,11 +61,13 @@
 @theme {
     --legal-color: #d92d2d;
     --frontend-color: #1e90ff;
+    --logo-h-color: #EB0052;
 }
 
 .dark {
     --legal-color: #fd5c5c;
     --frontend-color: #89b5fa;
+    --logo-h-color: #EB0052;
 }
 
 .legal {
