@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "title": "Политика",
+  "description": "Политики и юридическая информация",
+  "icon": "Scale",
+  "pages": [
+    "index",
+    "---Политики---",
+    "privacy-policy",
+    "terms-of-use",
+    "cookies-policy",
+    "data-processing",
+    "dmca-policy"
+  ]
+}

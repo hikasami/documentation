@@ -1,0 +1,9 @@
+{
+  "title": "Frontend",
+  "description": "Документация по фронтенду Hikasami",
+  "icon": "AppWindow",
+  "root": true,
+  "pages": [
+    "index"
+  ]
+}

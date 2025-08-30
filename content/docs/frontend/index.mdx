@@ -1,0 +1,147 @@
+---
+title: Hikasami CSS Naming Convention (HCNC)
+---
+
+Наша команда в Hikasami использует собственную систему наименования CSS-классов. Она основана на BEM, но дополнена:
+- другими разделителями для элементов
+- использованием camelCase состояний (`isActive`, `hasError`)
+- и utility-классами (по типу Tailwind)
+
+---
+
+## 1. Общие правила
+1. Все названия на английском языке
+2. Используются полные слова, без сокращений (`description`, а не `desc`)
+3. Разделители:
+   - `_` — элемент блока
+   - `__` — вложенный элемент
+   - `--` — модификатор
+   - `is` / `has` + camelCase — состояние
+4. Единицы измерения в утилитах — rem
+5. Нейминг отражает роль элемента, а не его внешний вид (`card_info__title`, а не `big-red-text`)
+
+---
+
+## 2. Блоки
+Блок — независимый компонент интерфейса.
+
+Примеры:
+```html
+<div class="card"></div>
+<button class="button"></button>
+<header class="header"></header>
+````
+
+---
+
+## 3. Элементы
+
+Элемент — часть блока, которая без него не имеет смысла.
+
+Примеры:
+
+```html
+<div class="card_info"></div>
+<h3 class="card_info__title"></h3>
+<p class="card_info__description"></p>
+<svg class="button_icon"></svg>
+```
+
+---
+
+## 4. Модификаторы
+
+Модификатор задаёт вариацию блока или элемента.
+
+Примеры:
+
+```html
+<div class="card card--highlighted"></div>
+<button class="button button--large"></button>
+```
+
+---
+
+## 5. Состояния
+
+Состояния описывают динамическое поведение.
+
+Примеры:
+
+```html
+<button class="button isActive">Click</button>
+<input class="input hasError" />
+```
+
+---
+
+## 6. Утилитарные классы
+
+Utility-классы применяются для мелкой вёрстки.
+
+Примеры:
+
+```html
+<div class="flex items-center mt-2"></div>
+<p class="text-center text-sm mb-4"></p>
+```
+
+---
+
+## 7. SCSS-вложенность
+
+```scss
+.card {
+  &_info {
+    display: flex;
+
+    &__title {
+      font-weight: bold;
+    }
+
+    &__description {
+      color: #777;
+    }
+  }
+
+  &--highlighted {
+    border: 2px solid #eb0052;
+  }
+
+  &.isActive {
+    opacity: 1;
+  }
+}
+```
+
+---
+
+## 8. Полный пример
+
+```html
+<div class="card card--highlighted isActive">
+  <div class="card_info flex mt-2">
+    <h3 class="card_info__title">Title</h3>
+    <p class="card_info__description">Description</p>
+  </div>
+
+  <button class="button isActive">
+    <svg class="button_icon"></svg>
+  </button>
+</div>
+```
+
+---
+
+## 9. Таблица правил
+
+
+| Тип             | Формат             | Пример                     |
+| --------------- | ------------------ | -------------------------- |
+| Блок            | lowercase/kebab    | `card`, `button`           |
+| Элемент 1 ур.   | `_`                | `card_info`, `button_icon` |
+| Элемент вложен. | `__`               | `card_info__title`         |
+| Модификатор     | `--`               | `card--highlighted`        |
+| Состояние       | is/has + camelCase | `isActive`, `hasError`     |
+| Утилиты         | короткие atomic    | `mt-2`, `flex`, `text-sm`  |
+

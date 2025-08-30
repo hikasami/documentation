@@ -8,9 +8,10 @@ import {
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
+import { Rate } from '@/components/rate';
 import { getMDXComponents } from '@/mdx-components';
 
-export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
+export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
@@ -29,6 +30,13 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
           })}
         />
       </DocsBody>
+      <Rate
+        onRateAction={async (url, feedback) => {
+          'use server';
+          await new Promise((r) => setTimeout(r, 1000));
+          return { githubUrl: 'https://t.me/hikasami_support_bot' };
+        }}
+      />
     </DocsPage>
   );
 }
@@ -38,7 +46,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<'/docs/[[...slug]]'>,
+  props: PageProps<'/[[...slug]]'>,
 ): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
