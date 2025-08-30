@@ -72,13 +72,8 @@ export async function generateMetadata(
   if (!page) notFound();
 
   return createMetadata({
+    id: page.path,
     title: page.data.title,
     description: page.data.description,
-    openGraph: {
-      url: `https://docs.hikasami.com${page.url}`,
-    },
-    twitter: {
-      images: `https://docs.hikasami.com/api/og?title=${encodeURIComponent(page.data.title)}`,
-    },
   });
 }
