@@ -1,16 +1,15 @@
 import { source } from '@/lib/source';
 import {
   DocsBody,
-  DocsDescription,
-  DocsPage,
-  DocsTitle,
+  DocsPage
 } from 'fumadocs-ui/page';
-import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { Rate } from '@/components/rate';
 import { getMDXComponents } from '@/mdx-components';
 import { LLMCopyButton, ViewOptions } from '@/components/page-actions';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
 
 export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
@@ -72,8 +71,18 @@ export async function generateMetadata(
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  return {
-    title: page.data.title,
-    description: page.data.description,
-  };
+  const title = page.data.title;
+  const description = page.data.description;
+
+  return createMetadata({
+    title,
+    description,
+    openGraph: {
+      url: `https://docs.hikasami.com${page.url}`,
+      images: `https://docs.hikasami.com/api/og?title=${encodeURIComponent(title)}`,
+    },
+    twitter: {
+      images: `https://docs.hikasami.com/api/og?title=${encodeURIComponent(title)}`,
+    },
+  });
 }

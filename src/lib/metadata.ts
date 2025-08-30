@@ -7,7 +7,7 @@ export function createMetadata(override: Metadata): Metadata {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: 'https://docs.hikasami.com',
-      images: '/banner.png',
+      images: `https://docs.hikasami.com/api/og?title=${override.title}`,
       siteName: 'Hikasami Docs',
       ...override.openGraph,
     },
