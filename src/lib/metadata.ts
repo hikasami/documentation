@@ -13,7 +13,7 @@ export function createMetadata(override: Metadata & { id?: string }): Metadata {
       url: `https://docs.hikasami.com/${id}`,
       images: [
         {
-          url: `https://docs.hikasami.com/api/og?id=${id}&token=${token}&title=${encodeURIComponent(String(override.title ?? "Hikasami"))}`,
+          url: `https://docs.hikasami.com/api/og?id=${id}&token=${token}&title=${encodeURIComponent(String(override.title ?? "Hikasami"))}` + (override.description ? `&description=${encodeURIComponent(override.description)}` : ""),
           width: 1200,
           height: 630,
         },
@@ -26,7 +26,7 @@ export function createMetadata(override: Metadata & { id?: string }): Metadata {
       creator: '@hikasami',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: `https://docs.hikasami.com/api/og?id=${id}&token=${token}&title=${encodeURIComponent(String(override.title ?? "Hikasami"))}`,
+      images: `https://docs.hikasami.com/api/og?id=${id}&token=${token}&title=${encodeURIComponent(String(override.title ?? "Hikasami"))}` + (override.description ? `&description=${encodeURIComponent(override.description)}` : ""),
       ...override.twitter,
     },
   };

@@ -32,6 +32,7 @@ async function loadGoogleFont (font: string, text: string) {
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const title = searchParams.get('title') || 'Hikasami';
+  const description = searchParams.get('description');
 
   const id = searchParams.get('id');
   const token = searchParams.get('token');
@@ -79,6 +80,21 @@ export async function GET(request: Request) {
         >
           {title}
         </div>
+
+        {/* Описание */}
+        {description && <div
+          style={{
+            width: '100%',
+            fontSize: '21px',
+            fontFamily: 'Geist',
+            fontWeight: 400,
+            color: '#7E7E7E',
+            letterSpacing: '0.05em',
+            display: 'flex',
+          }}
+        >
+          {description}
+        </div>}
 
         {/* Блок документации */}
         <div
