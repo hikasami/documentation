@@ -71,18 +71,14 @@ export async function generateMetadata(
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const title = page.data.title;
-  const description = page.data.description;
-
   return createMetadata({
-    title,
-    description,
+    title: page.data.title,
+    description: page.data.description,
     openGraph: {
       url: `https://docs.hikasami.com${page.url}`,
-      images: `https://docs.hikasami.com/api/og?title=${encodeURIComponent(title)}`,
     },
     twitter: {
-      images: `https://docs.hikasami.com/api/og?title=${encodeURIComponent(title)}`,
+      images: `https://docs.hikasami.com/api/og?title=${encodeURIComponent(page.data.title)}`,
     },
   });
 }

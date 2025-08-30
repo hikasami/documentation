@@ -7,7 +7,14 @@ export function createMetadata(override: Metadata): Metadata {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: 'https://docs.hikasami.com',
-      images: `https://docs.hikasami.com/api/og?title=${override.title}`,
+      images: [
+        {
+          url: `https://docs.hikasami.com/api/og?title=${override.title}`,
+          width: 1200,
+          height: 630,
+          alt: 'Hikasami Docs OG Image',
+        },
+      ],
       siteName: 'Hikasami Docs',
       ...override.openGraph,
     },
@@ -16,7 +23,7 @@ export function createMetadata(override: Metadata): Metadata {
       creator: '@hikasami',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: '/banner.png',
+      images: `https://docs.hikasami.com/api/og?title=${override.title}`,
       ...override.twitter,
     },
   };
