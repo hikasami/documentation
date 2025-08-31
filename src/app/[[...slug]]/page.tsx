@@ -72,7 +72,7 @@ export async function generateMetadata(
   if (!page) notFound();
 
   return createMetadata({
-    id: page.path,
+    id: page.url,
     title: page.data.title,
     description: page.data.description,
   });
