@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo, useEffect } from "react";
 import { iconMap } from "./index";
-import { Search, Copy } from "lucide-react";
+import { Search, Copy, Check } from "lucide-react";
 
 type IconKey = keyof typeof iconMap;
 
@@ -9,6 +9,8 @@ export const HikasamiIconsBox: React.FC = () => {
   const [search, setSearch] = useState("");
   const [icons, setIcons] = useState<Record<string, React.ReactNode>>({});
   const [copyType, setCopyType] = useState<"name" | "svg">("name");
+  const [copiedKeys, setCopiedKeys] = useState<Record<string, boolean>>({}); // ✅ хранит ключи с "успешным копированием"
+
   const filteredKeys = useMemo(
     () =>
       Object.keys(iconMap).filter((key) =>
@@ -36,17 +38,20 @@ export const HikasamiIconsBox: React.FC = () => {
   const handleCopy = async (key: IconKey) => {
     if (copyType === "name") {
       await navigator.clipboard.writeText(key);
-      alert(`Имя "${key}" скопировано!`);
     } else {
       await loadIcon(key, "1.2rem", "1.2rem");
       const IconComponent = await iconMap[key]();
       const element = <IconComponent width={"1.2rem"} height={"1.2rem"} />;
-      import("react-dom/server").then(({ renderToStaticMarkup }) => {
-        const svgString = renderToStaticMarkup(element);
-        navigator.clipboard.writeText(svgString);
-        alert("SVG скопирован!");
-      });
+      const { renderToStaticMarkup } = await import("react-dom/server");
+      const svgString = renderToStaticMarkup(element);
+      await navigator.clipboard.writeText(svgString);
     }
+
+    // ✅ показать Check и вернуть обратно через 4 сек
+    setCopiedKeys((prev) => ({ ...prev, [key]: true }));
+    setTimeout(() => {
+      setCopiedKeys((prev) => ({ ...prev, [key]: false }));
+    }, 4000);
   };
 
   return (
@@ -73,8 +78,12 @@ export const HikasamiIconsBox: React.FC = () => {
           Копировать SVG
         </label>
       </div>
-      <button type="button" data-search-full="" className="rounded-xl gap-2 p-3 border bg-fd-popover/80 backdrop-blur-xl text-fd-popover-foreground mb-6 w-full inline-flex items-center ps-2 text-sm text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground">
-        <Search width={20} height={20} className="text-fd-muted-foreground"/>
+      <button
+        type="button"
+        data-search-full=""
+        className="rounded-xl gap-2 p-3 border bg-fd-popover/80 backdrop-blur-xl text-fd-popover-foreground mb-6 w-full inline-flex items-center ps-2 text-sm text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
+      >
+        <Search width={20} height={20} className="text-fd-muted-foreground" />
         <input
           type="text"
           placeholder="Поиск иконки..."
@@ -93,12 +102,19 @@ export const HikasamiIconsBox: React.FC = () => {
             title={copyType === "name" ? "Копировать имя" : "Копировать SVG"}
             onMouseEnter={() => loadIcon(key as IconKey)}
           >
-            <div className="empty:hidden absolute top-0 right-[1px] z-2 backdrop-blur-lg rounded-lg text-fd-muted-foreground">
-              <button type="button" className="cursor-pointer inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:opacity-50 focus-visible:outline-none p-1 [&amp;_svg]:size-4 group-hover:text-fd-accent-foreground" aria-label={copyType === "name" ? "Копировать имя" : "Копировать SVG"}>
-                <Copy width={10} height={10}/>
+            <div className="absolute top-0 right-[1px] z-2 backdrop-blur-lg rounded-lg text-fd-muted-foreground">
+              <button
+                type="button"
+                className="cursor-pointer inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors duration-100 disabled:opacity-50 focus-visible:outline-none p-1 [&_svg]:size-4 group-hover:text-fd-accent-foreground"
+                aria-label={copyType === "name" ? "Копировать имя" : "Копировать SVG"}
+              >
+                {copiedKeys[key] ? (
+                  <Check width={10} height={10} className="text-white" />
+                ) : (
+                  <Copy width={10} height={10} />
+                )}
               </button>
             </div>
-
 
             <div className="p-2 rounded transition min-h-[32px] flex items-center justify-center">
               {icons[key] || (
