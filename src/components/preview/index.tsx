@@ -28,13 +28,21 @@ interface TextPreview {
   icons: { name: string; color: string }[];
 }
 
+interface BackgroundChild {
+  pos: "center" | "bottom";
+  label: string;
+}
+
+interface BackgroundBlock {
+  background: string;
+  border: string;
+  children: BackgroundChild[];
+  ["card-background"]?: string;
+}
+
 interface BackgroundPreview {
   type: "backgrounds";
-  blocks: {
-    background: string;
-    border: string;
-    children: { pos: "center" | "bottom"; label: string }[];
-  }[];
+  blocks: BackgroundBlock[];
 }
 
 type PreviewData = TextPreview | BackgroundPreview;
@@ -83,7 +91,7 @@ export const Preview: React.FC<PreviewProps> = ({ name }) => {
 
           {/* Правая часть */}
           <div className="md:h-ful flex h-[35%] w-full items-center justify-center gap-7 border-t md:h-full md:w-[50%] md:gap-5 md:border-l md:border-t-0">
-            {data.icons.map((icon: any, index: number) => (
+            {data.icons.map((icon, index) => (
               <div key={index} style={{ color: icon.color }}>
                 {iconsMap[icon.name]}
               </div>
@@ -99,10 +107,10 @@ export const Preview: React.FC<PreviewProps> = ({ name }) => {
     return (
       <Wrapper>
         <div className="bg-fd-background rounded-xl flex h-[700px] w-full flex-col md:h-[412px] md:flex-row overflow-hidden">
-          {data.blocks.map((block: any, index: number) => (
+          {data.blocks.map((block, index) => (
             <div
               key={index}
-              style={{backgroundColor: block.background}}
+              style={{ backgroundColor: block.background }}
               className={` flex h-[50%] items-center justify-center ${
                 index === 0
                   ? "border-r md:h-[100%] md:w-[50%]"
@@ -113,7 +121,7 @@ export const Preview: React.FC<PreviewProps> = ({ name }) => {
                 className={`relative flex h-[164px] w-[164px] items-center justify-center rounded-[12px] border`}
                 style={{ backgroundColor: block["card-background"] }}
               >
-                {block.children.map((child: any, idx: number) => (
+                {block.children.map((child, idx) => (
                   <div
                     key={idx}
                     className="text-fd-foreground flex h-6 w-6 items-center justify-center rounded-full text-xs"
@@ -136,7 +144,9 @@ export const Preview: React.FC<PreviewProps> = ({ name }) => {
 
   return (
     <Wrapper>
-        <p className="flex flex-row items-center gap-2"><TrianglethunderboltRegularIcon /> Превью <span className="font-bold">{name}</span> не найдено</p>
+      <p className="flex flex-row items-center gap-2">
+        <TrianglethunderboltRegularIcon /> Превью <span className="font-bold">{name}</span> не найдено
+      </p>
     </Wrapper>
   );
 };
