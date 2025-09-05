@@ -1,0 +1,42 @@
+{
+  "ColorTextExample": {
+    "type": "text",
+    "title": "Заголовок",
+    "description": "Описание или дополнительный текст",
+    "link": {
+      "text": "Ссылка",
+      "href": "#"
+    },
+    "icons": [
+      { "name": "CirclecheckRegularIcon", "color": "var(--ds-green-500)" },
+      { "name": "ThumbsupRegularIcon", "color": "var(--ds-yellow-500)" },
+      { "name": "StarRegularIcon", "color": "var(--ds-orange-500)" },
+      { "name": "HouseRegularIcon", "color": "var(--ds-red-500)" },
+      { "name": "HeartRegularIcon", "color": "var(--ds-pink-500)" }
+    ]
+  },
+
+  "ColorBackgroundExample": {
+    "type": "backgrounds",
+    "blocks": [
+      {
+        "background": "var(--ds-background-primary)",
+        "card-background": "var(--ds-background-secondary)",
+        "border": "border-gray-400",
+        "children": [
+          { "pos": "center", "label": "2" },
+          { "pos": "bottom", "label": "1" }
+        ]
+      },
+      {
+        "background": "var(--ds-background-secondary)",
+        "card-background": "var(--ds-background-primary)",
+        "border": "border-gray-400",
+        "children": [
+          { "pos": "center", "label": "1" },
+          { "pos": "bottom", "label": "2" }
+        ]
+      }
+    ]
+  }
+}

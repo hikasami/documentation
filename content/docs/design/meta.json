@@ -1,0 +1,13 @@
+{
+  "title": "Дизайн система",
+  "description": "Документация по дизайн системе Hikasami",
+  "icon": "AppWindow",
+  "root": true,
+  "pages": [
+    "index",
+    "--- Основы ---",
+    "icons",
+    "colors",
+    "css-convention"
+  ]
+}

@@ -1,0 +1,231 @@
+---
+title: Цвета
+description: "Наша цветовая система основана на традиционных японских цветах и адаптирована для использования в тёмной теме. Все цвета доступны как CSS-переменные (--ds-*) и поддерживают масштабирование."
+icon: Palette
+---
+
+## Палитра
+
+<HikasamiColorBox/>
+
+---
+
+## Фоновые цвета
+Для базовых страниц и контейнеров предусмотрено два фоновых цвета. **Primary** используется для главного фона (`html`, `body`, основные блоки), **Secondary** — для вложенных элементов, карточек и модальных окон.  
+
+<HikasamiColorList
+  colors={[
+    { name: "Фон 1 (Primary)", variable: "--ds-background-primary", description: "Основной фон (#0D0D0D)" },
+    { name: "Фон 2 (Secondary)", variable: "--ds-background-secondary", description: "Второстепенный фон (#1C1C1C)" },
+  ]}
+/>
+
+<Preview name="ColorBackgroundExample" />
+
+---
+
+## Границы
+
+Для отделения компонентов в интерфейсе используются полупрозрачные границы.  
+Основным является `rgba(250, 250, 250, 0.04)`. Он применяется, когда нужно **ярко и чётко выделить объект**, при этом сохраняя лёгкость интерфейса.
+
+<HikasamiColorList
+  colors={[
+    {
+      name: "Граница 1",
+      variable: "rgba(250, 250, 250, 0.04)",
+      description: "Основной бордер для чёткого выделения элементов",
+    },
+    {
+      name: "Граница 2",
+      variable: "--ds-border-primary",
+      description: "Альтернативный бордер для менее заметных разделителей",
+    },
+  ]}
+/>
+
+### Зачем используется полупрозрачная граница?
+
+- **Визуальная лёгкость** — бордер не перегружает интерфейс и не создаёт жёстких границ.  
+- **Адаптивность** — прозрачность позволяет бордеру подстраиваться под фон.  
+- **Единый стиль** — поддерживает философию «тепло среди холода»: видимый, но не навязчивый.  
+- **Чистота интерфейса** — в списках и таблицах не возникает «сетчатого эффекта».  
+- **Баланс в тёмной теме** — цвет не слишком контрастный и не теряется на фоне.  
+
+Таким образом, `rgba(250, 250, 250, 0.04)` работает не как отдельный цвет, а как **слой подсветки**, который делает границы более органичными.
+
+---
+
+## Фоны компонентов
+
+Для пользовательских интерфейсных компонентов предусмотрено три фоновых состояния.  
+Они помогают визуально разделять стандартное, наведение и активное состояние элементов.
+
+<HikasamiColorList
+  colors={[
+    {
+      name: "Фон компонента 1",
+      variable: "--ds-gray-700",
+      description: "Базовый фон компонента (#1c1c1c) — например карточки, панели, меню",
+    },
+    {
+      name: "Фон компонента 2",
+      variable: "--ds-gray-600",
+      description: "Фон при наведении (#242424) — используется для hover-состояния (не всегда)",
+    },
+    {
+      name: "Фон компонента 3",
+      variable: "transparent",
+      description: "Фон активного состояния (transparent)",
+    },
+  ]}
+/>
+
+---
+
+## Текст и иконки
+
+В дизайне используется ограниченная палитра для текста и иконок, чтобы сохранить читаемость и единый стиль.  
+Основная идея — минимализм и акцент на важном.
+
+<HikasamiColorList
+  colors={[
+    {
+      name: "Текст 1",
+      variable: "--ds-gray-100",
+      description: "Основной цвет текста (первичный, заголовки, ключевая информация)",
+    },
+    {
+      name: "Текст 2",
+      variable: "--ds-gray-300",
+      description: "Вторичный цвет текста (описания, вспомогательная информация)",
+    },
+    {
+      name: "Текст 3",
+      variable: "--ds-gray-500",
+      description: "Неактивные состояния (disabled), подсказки, метки",
+    },
+  ]}
+/>
+
+<Preview name="ColorTextExample" />
+
+---
+
+## Серый
+Серый используется как вспомогательная палитра для текста, иконок и системных элементов.  
+В ней учтены связи с основными фонами:  
+- `gray-900` совпадает с **Фоном 1**  
+- `gray-700` совпадает с **Фоном 2**  
+- `gray-600` совпадает с **Границей 2**
+
+<HikasamiColorList
+  colors={[
+    { name: "Серый 100", variable: "--ds-gray-100", description: "Белый (#FFFFFF)" },
+    { name: "Серый 200", variable: "--ds-gray-200", description: "#C2C2C2" },
+    { name: "Серый 300", variable: "--ds-gray-300", description: "#797979" },
+    { name: "Серый 400", variable: "--ds-gray-400", description: "#4E4E4E" },
+    { name: "Серый 500", variable: "--ds-gray-500", description: "#383838" },
+    { name: "Серый 600", variable: "--ds-gray-600", description: "Граница 2 (#242424)" },
+    { name: "Серый 700", variable: "--ds-gray-700", description: "Фон 2 (#1C1C1C)" },
+    { name: "Серый 800", variable: "--ds-gray-800", description: "#121212" },
+    { name: "Серый 900", variable: "--ds-gray-900", description: "Фон 1 (#0D0D0D)" },
+  ]}
+/>
+
+## Акцентные и семантические цвета
+
+### Розовый (Accent / Pink)
+Основной акцентный цвет интерфейса, используемый для кнопок, ссылок и ключевых акцентов.  
+Главный оттенок: `pink-500`.
+
+<HikasamiColorList
+  colors={[
+    { name: "Розовый 50", variable: "--ds-pink-50", description: "#FFF0F5" },
+    { name: "Розовый 100", variable: "--ds-pink-100", description: "#FFD6E2" },
+    { name: "Розовый 200", variable: "--ds-pink-200", description: "#FFADC7" },
+    { name: "Розовый 300", variable: "--ds-pink-300", description: "#FF85A9" },
+    { name: "Розовый 400", variable: "--ds-pink-400", description: "#F54A7E" },
+    { name: "Розовый 500", variable: "--ds-pink-500", description: "Акцент (#EB0052)" },
+    { name: "Розовый 600", variable: "--ds-pink-600", description: "#C40046" },
+    { name: "Розовый 700", variable: "--ds-pink-700", description: "#9D0039" },
+    { name: "Розовый 800", variable: "--ds-pink-800", description: "#76002B" },
+    { name: "Розовый 900", variable: "--ds-pink-900", description: "#4F001E" },
+  ]}
+/>
+
+### Зелёный (Success / Green)
+Используется для состояний «успеха» (например, успешные действия или положительные статусы).  
+Главный оттенок: `green-400`.
+
+<HikasamiColorList
+  colors={[
+    { name: "Зелёный 50", variable: "--ds-green-50", description: "#F2F8F3" },
+    { name: "Зелёный 100", variable: "--ds-green-100", description: "#DDEEDD" },
+    { name: "Зелёный 200", variable: "--ds-green-200", description: "#BBDD BB" },
+    { name: "Зелёный 300", variable: "--ds-green-300", description: "#99CC99" },
+    { name: "Зелёный 400", variable: "--ds-green-400", description: "Успех (#86C166)" },
+    { name: "Зелёный 500", variable: "--ds-green-500", description: "#5CAE5F" },
+    { name: "Зелёный 600", variable: "--ds-green-600", description: "#449D47" },
+    { name: "Зелёный 700", variable: "--ds-green-700", description: "#2D8B2F" },
+    { name: "Зелёный 800", variable: "--ds-green-800", description: "#177A18" },
+    { name: "Зелёный 900", variable: "--ds-green-900", description: "#006600" },
+  ]}
+/>
+
+### Жёлтый (Warning / Yellow)
+Используется для предупреждений.  
+Главный оттенок: `yellow-500`.
+
+<HikasamiColorList
+  colors={[
+    { name: "Жёлтый 50", variable: "--ds-yellow-50", description: "#FFFAF0" },
+    { name: "Жёлтый 100", variable: "--ds-yellow-100", description: "#FFF1CC" },
+    { name: "Жёлтый 200", variable: "--ds-yellow-200", description: "#FFE699" },
+    { name: "Жёлтый 300", variable: "--ds-yellow-300", description: "#FFDB66" },
+    { name: "Жёлтый 400", variable: "--ds-yellow-400", description: "#FACC33" },
+    { name: "Жёлтый 500", variable: "--ds-yellow-500", description: "Предупреждение (#F5AE14)" },
+    { name: "Жёлтый 600", variable: "--ds-yellow-600", description: "#D9960E" },
+    { name: "Жёлтый 700", variable: "--ds-yellow-700", description: "#B37A08" },
+    { name: "Жёлтый 800", variable: "--ds-yellow-800", description: "#8C5F05" },
+    { name: "Жёлтый 900", variable: "--ds-yellow-900", description: "#664404" },
+  ]}
+/>
+
+### Оранжевый (Attention / Orange)
+Используется для акцентов внимания и менее критичных сообщений.  
+Главный оттенок: `orange-500`.
+
+<HikasamiColorList
+  colors={[
+    { name: "Оранжевый 50", variable: "--ds-orange-50", description: "#FFF5F0" },
+    { name: "Оранжевый 100", variable: "--ds-orange-100", description: "#FFE0CC" },
+    { name: "Оранжевый 200", variable: "--ds-orange-200", description: "#FFC299" },
+    { name: "Оранжевый 300", variable: "--ds-orange-300", description: "#FFA366" },
+    { name: "Оранжевый 400", variable: "--ds-orange-400", description: "#FF8533" },
+    { name: "Оранжевый 500", variable: "--ds-orange-500", description: "Внимание (#F47921)" },
+    { name: "Оранжевый 600", variable: "--ds-orange-600", description: "#D4651B" },
+    { name: "Оранжевый 700", variable: "--ds-orange-700", description: "#B45215" },
+    { name: "Оранжевый 800", variable: "--ds-orange-800", description: "#943E0F" },
+    { name: "Оранжевый 900", variable: "--ds-orange-900", description: "#742B09" },
+  ]}
+/>
+
+### Красный (Error / Red)
+Используется для ошибок и критических состояний.  
+Главный оттенок: `red-500`.
+
+<HikasamiColorList
+  colors={[
+    { name: "Красный 50", variable: "--ds-red-50", description: "#FFF5F5" },
+    { name: "Красный 100", variable: "--ds-red-100", description: "#FFE0E0" },
+    { name: "Красный 200", variable: "--ds-red-200", description: "#FFBABA" },
+    { name: "Красный 300", variable: "--ds-red-300", description: "#FF8A8A" },
+    { name: "Красный 400", variable: "--ds-red-400", description: "#E25C5C" },
+    { name: "Красный 500", variable: "--ds-red-500", description: "Ошибка (#C73E3A)" },
+    { name: "Красный 600", variable: "--ds-red-600", description: "#A5322F" },
+    { name: "Красный 700", variable: "--ds-red-700", description: "#822624" },
+    { name: "Красный 800", variable: "--ds-red-800", description: "#601A1A" },
+    { name: "Красный 900", variable: "--ds-red-900", description: "#3D0E0E" },
+  ]}
+/>
